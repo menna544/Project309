@@ -3,7 +3,7 @@ import './footer.css';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-
+import imag from '../../images/photoremovebg-preview.png'
 function Footer() {
   const handleFacebookClick = () => {
     window.open('https://www.facebook.com', '_blank');
@@ -20,7 +20,11 @@ function Footer() {
 
   return (
     <div className='footer'>
-      <h1>CoffeShop momo</h1>
+      <div className='logoa'>
+      <h1>CoffeShop</h1>
+      <img src={imag} className="imagee1" alt="description" />
+      </div>
+      
       <div className='icon'>
         <FacebookOutlinedIcon onClick={handleFacebookClick} />
         <InstagramIcon onClick={handleInstagramClick} />

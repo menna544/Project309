@@ -35,16 +35,16 @@ const ImageSlider = () => {
 
   return (
     <>
-      <div className="slideStyles">
+      <div className="slider">
         <div
-          className="leftArrowStyles"
+          className="left"
           onClick={handleLeftArrowClick}
           aria-label="Previous Slide"
         >
           &#9665;
         </div>
         <div
-          className="slideStyles1"
+          className="slides"
           style={{ backgroundImage: `url(${Slides[currentIndex]})` }}
         >
           <div className="content">
@@ -66,7 +66,7 @@ const ImageSlider = () => {
           </div>
         </div>
         <div
-          className="RightArowStyles"
+          className="Right"
           onClick={handleRightArrowClick}
           aria-label="Next Slide"
         >
