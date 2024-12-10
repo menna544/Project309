@@ -1,10 +1,10 @@
-.slideStyles {
+.slider {
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 700px;
   }
   
-  .slideStyles1 {
+  .slides{
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -13,11 +13,10 @@
     transition: background-image 0.3s ease;
   }
   
-  .leftArrowStyles,
-  .RightArowStyles {
+  .left,
+  .Right {
     font-size: 24px;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -29,44 +28,15 @@
     transition: background-color 0.3s ease;
   }
   
-  .leftArrowStyles {
+  .left {
     left: 10px;
   }
   
-  .RightArowStyles {
+  .Right {
     right: 10px;
   }
-  
-  .leftArrowStyles:hover,
-  .RightArowStyles:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  .dot {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 3;
-  }
-  
-  .dotstyle {
-    font-size: 18px;
-    cursor: pointer;
-    color: #fff;
-    transition: color 0.3s ease;
-  }
-  
-  .dotstyle.active {
-    color: red;
-  }
-  
-  .dotstyle:hover {
-    color: #b2744c;
-  }
-  
+ 
+ 
   .content {
     position: absolute;
     top: 50%;

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./nav.css";
-
+import imag from '../../images/photoremovebg-preview.png'
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav>
-      <h1 className="title">CoffeShop</h1>
+      <img src={imag} className="imagee" alt="description" />
       <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
         <span></span>
         <span></span>
