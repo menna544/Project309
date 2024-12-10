@@ -31,9 +31,7 @@ const ImageSlider = () => {
     );
   };
 
-  const handleDotClick = (index) => {
-    setCurrentIndex(index);
-  };
+  
 
   return (
     <>
@@ -74,19 +72,7 @@ const ImageSlider = () => {
         >
           &#9655;
         </div>
-        <div className="dot">
-          {Slides.map((slide, slideindex) => (
-            <div
-              key={slideindex}
-              className={`dotstyle ${currentIndex === slideindex ? 'active' : ''}`}
-              onClick={() => handleDotClick(slideindex)}
-              role="button"
-              aria-label={`Go to slide ${slideindex + 1}`}
-            >
-              ⚫
-            </div>
-          ))}
-        </div>
+      
       </div>
     </>
   );
