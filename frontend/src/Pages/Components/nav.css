@@ -3,13 +3,17 @@
 }
 
 nav {
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #6C3428;
     color: white;
-    position: sticky;
-    top: 0;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; 
 }
 
 nav .title {

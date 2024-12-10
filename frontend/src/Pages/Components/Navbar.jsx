@@ -17,7 +17,7 @@ export const Navbar = () => {
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
         </li>
         <li>
-          <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="#menu" onClick={() => setMenuOpen(false)}>Menu</a>
         </li>
         <li>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>

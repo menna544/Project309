@@ -14,10 +14,10 @@ const ImageSlider = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex === Slides.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Changed to 3000ms (3 seconds)
+    }, 3000); 
 
-    return () => clearInterval(interval); // Cleanup the interval when the component unmounts
-  }, [Slides.length]); // Add Slides.length as a dependency if the array could change
+    return () => clearInterval(interval); 
+  }, [Slides.length]); 
 
   const handleLeftArrowClick = () => {
     setCurrentIndex((prevIndex) =>
