@@ -1,0 +1,40 @@
+
+.footer{
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height:200px;
+    position: relative;
+    bottom: 0;
+    color:  #FFF;
+    background-color: #6C3428;
+}
+.footer h1{
+    text-align: center;
+     top: 20px;
+     position: relative;
+    font-size: 30px;
+}
+.icon{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+.ivon-content{
+    display: flex;
+    flex-direction: row;
+}
+.icon1{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-left: 40px;
+    margin-top: 20px;
+    font-size: 25px;
+}
+.title h1{
+    color:  #FFF;
+    font-size: 20px;
+}
