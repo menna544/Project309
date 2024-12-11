@@ -26,14 +26,11 @@ function Home() {
               />
             </div>
             <div className="about-content">
-              <h3>What Makes Our Coffee Special?</h3>
+              <h3>From Bean to Cup: Our Story</h3>
               <p>
-                If you are an avid coffee drinker, chances are that you’ve come
-                across the term specialty coffee at least once in the hunt for
-                that perfect cup of coffee. Passionate baristas, latte art,
-                manual coffee brewing, and tiny espresso drinks make up just a
-                portion of the specialty coffee movement; the foundations run
-                much deeper.
+              At our coffee shop, every cup tells a story—a journey that begins in the lush, sun-kissed plantations where coffee cherries ripen to perfection. Our beans are handpicked by farmers who have mastered the art of coffee cultivation over generations, ensuring only the finest cherries make their way into your cup.
+
+We believe in sustainability and ethical sourcing, working closely with local communities to support fair trade practices. Each bean reflects the dedication and care of the farmers who nurture them, turning their passion into the foundation of our craft.
               </p>
             </div>
           </div>
