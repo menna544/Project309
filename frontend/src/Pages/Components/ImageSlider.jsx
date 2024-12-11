@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import i from "../../images/262f0b9f-e0a8-40e4-bdd3-8f8a087cb0c8.jpg";
-import i3 from "../../images/93988188-f9df-4122-ab26-5ba755e0b538.jpg";
-import i4 from "../../images/b0cd4441-73f8-4ea0-8515-1689cb7d91a0.jpg";
-import i2 from "../../images/2.jpg";
+import i from "../../images/view-coffee-machine-making-coffee-home.jpg";
+import i3 from "../../images/view-coffee-machin.jpg";
+import i4 from "../../images/close-up-barista-making-cappuccino-bartender-preparing-coffee-drink.jpg";
+import i2 from "../../images/cups-professional-coffee-machine.jpg";
 import "./imageslider.css";
 
 const ImageSlider = () => {
