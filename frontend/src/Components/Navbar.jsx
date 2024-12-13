@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./nav.css";
-import imag from '../../images/photoremovebg-preview.png'
+import imag from '../images/photoremovebg-preview.png'
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 

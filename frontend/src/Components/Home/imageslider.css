@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Protest+Riot&display=swap');
+
 .slider {
     position: relative;
     width: 100%;
@@ -64,6 +66,9 @@
     background-color: #b2744c;
     color: white;
     border: none;
+    font-family: "Oswald", serif;
+  font-weight: 500;
+  font-style: normal;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
