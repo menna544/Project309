@@ -3,7 +3,7 @@ import './footer.css';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import imag from '../../images/photoremovebg-preview.png'
+import imag from '../images/photoremovebg-preview.png';
 function Footer() {
   const handleFacebookClick = () => {
     window.open('https://www.facebook.com', '_blank');
