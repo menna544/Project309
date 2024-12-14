@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import i from "../../images/view-coffee-machine-making-coffee-home.jpg";
 import i3 from "../../images/view-coffee-machin.jpg";
+import { useNavigate } from "react-router-dom";
 import i4 from "../../images/close-up-barista-making-cappuccino-bartender-preparing-coffee-drink.jpg";
 import i2 from "../../images/cups-professional-coffee-machine.jpg";
 import "./imageslider.css";
 
 const ImageSlider = () => {
+  const navigate = useNavigate();
   const Slides = [i, i, i2, i3, i4];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -18,7 +20,7 @@ const ImageSlider = () => {
 
     return () => clearInterval(interval); 
   }, [Slides.length]); 
-
+ 
   const handleLeftArrowClick = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? Slides.length - 1 : prevIndex - 1
@@ -53,6 +55,7 @@ const ImageSlider = () => {
               <br />
               coffee is now☕️☕️
             </h3>
+            
             <p>
               
               Coffee is flavoursome, fragrant, and deeply rich in taste (using
@@ -60,7 +63,7 @@ const ImageSlider = () => {
             </p>
             <button
               id="btn"
-              onClick={() => alert("Get yours now!")}
+              onClick={() => navigate("/auth")}
             >
               Get yours now
             </button>
