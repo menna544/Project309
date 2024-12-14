@@ -55,6 +55,7 @@ const ImageSlider = () => {
               <br />
               coffee is now☕️☕️
             </h3>
+            
             <p>
               Coffee is flavoursome, fragrant, and deeply rich in taste (using
               freshly roasted coffee beans).
