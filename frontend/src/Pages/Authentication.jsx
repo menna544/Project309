@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./authen.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -18,10 +18,6 @@ const Authentication = () => {
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true);
 
-  // Cleanup: Remove unnecessary storage
-  useEffect(() => {
-    localStorage.removeItem("isPaymentSuccessful");
-  }, []);
 
   const handleToggleView = () => {
     setIsSignUp(!isSignUp);
@@ -38,7 +34,6 @@ const Authentication = () => {
     e.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Validation
     if (!email || !emailPattern.test(email)) {
       setEmailError("Enter a valid email address");
       return;
@@ -52,7 +47,6 @@ const Authentication = () => {
       return;
     }
 
-    // User handling
     let users = JSON.parse(localStorage.getItem("users")) || [];
     if (isSignUp) {
       const existingUser = users.find((user) => user.email === email);
