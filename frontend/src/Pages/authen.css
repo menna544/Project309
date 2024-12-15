@@ -1,0 +1,126 @@
+.App {
+  display: flex;
+  justify-content: center;
+  background: url("../images/image\ \(1\).png") no-repeat center center fixed;
+  background-size: cover;
+  align-items: center;
+  height: 100vh;
+}
+
+.page7 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.cont6 {
+  width: 100%;
+  text-align: center;
+}
+
+.cont6 img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.cont6 h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  width: 90%;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px 20px 10px 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-container input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.input-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.input-icon:hover {
+  color: #007bff;
+}
+
+.button2 {
+  background-color: #b2744c;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  margin: 10px 0;
+  transition: background-color 0.3s;
+}
+
+.button2:hover {
+  background-color: #cee6f3;
+  border: 1px solid black;
+  color: #000;
+}
+
+h4.signup {
+  font-size: 14px;
+  color: #666;
+}
+
+h4.signup .sign1 {
+  color: #b2744c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+h4.signup .sign1:hover {
+  text-decoration: underline;
+}
+
+.arrow {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  text-align: left;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}

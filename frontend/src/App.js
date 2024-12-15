@@ -1,19 +1,18 @@
-
-import './App.css';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from './Pages/Home';
-import Products from './Pages/Products';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import Products from "./Pages/Products";
+import Authentication from "./Pages/Authentication";
 function App() {
   return (
     <>
-    <Router>
-     <Routes>
-    <Route path='/' element={<Home/>} />
-    <Route path='/product' element={<Products />} />
-    </Routes>
-
-    </Router>
-    
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product" element={<Products />} />
+          <Route path="/auth" element={<Authentication />} />
+        </Routes>
+      </Router>
     </>
   );
 }
