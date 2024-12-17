@@ -48,7 +48,12 @@ function Products() {
     });
     setIsSidebarOpen(true);
   };
-  
+
+  const goToProductDetails = (productId) => {
+    const product = products.find((item) => item.id === productId);
+    navigate(`/product/${productId}`, { state: product });
+  };
+
   const increaseQuantity = (productId) => {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
@@ -59,27 +64,25 @@ function Products() {
       return updatedCart;
     });
   };
-  
+
   const decreaseQuantity = (productId) => {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
       const product = updatedCart[productId];
-  
+
       if (product) {
-        
         if (product.quantity === 1) {
-          const { [productId]: removedItem, ...rest } = updatedCart; 
-          return rest; 
+          const { [productId]: removedItem, ...rest } = updatedCart;
+          return rest;
         } else {
           updatedCart[productId] = { ...product, quantity: product.quantity - 1 };
         }
       }
-  
+
       return updatedCart;
     });
   };
-  
-  
+
   const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = Object.values(cart).reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -99,11 +102,11 @@ function Products() {
 
       <div className="list">
         {products.map((product) => (
-          <div key={product.id} className="item">
+          <div key={product.id} className="item" onClick={() => goToProductDetails(product.id)}>
             <img src={product.image} alt={product.name} />
             <p>{product.name}</p>
             <div className="price">${product.price}</div>
-            <button onClick={() => addToCart(product.id)}>Add to cart</button>
+            <button onClick={(e) => { e.stopPropagation(); addToCart(product.id); }}>Add to cart</button>
           </div>
         ))}
       </div>
