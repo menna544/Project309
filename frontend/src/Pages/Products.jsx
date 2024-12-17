@@ -137,9 +137,6 @@ function Products() {
           <button className="clear-cart" onClick={() => setCart({})}>
             Clear Cart
           </button>
-          <button className="clear-cart">
-            Checkout
-          </button>
         </div>
       </div>
     </div>
