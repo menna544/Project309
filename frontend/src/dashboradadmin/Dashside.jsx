@@ -1,12 +1,18 @@
 import "./dashside.css";
 import { FaUser, FaBox, FaShoppingBag, FaHome, FaShoppingCart } from "react-icons/fa";
-
+import imag from '../images/573a46c7818f8cca76e394ac5af72542.jpg'
 function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
+           <div className="profile">
+                      <img src={imag} alt="ad" className="profileImage" />
+                      <div>
+                        <p className="adminName">Menna Maged</p>
+                      </div>
+                    </div>
           <ul className="sidebarList">
             <li className="sidebarlistItem active">
               <FaHome className="sidebarIcon" />
