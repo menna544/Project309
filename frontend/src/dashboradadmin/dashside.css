@@ -1,0 +1,81 @@
+.sidebar {
+    height: 100vh;
+    background-color: #f7f7ff;
+    position: sticky;
+    top: 0;
+    margin: 0;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebarTitle {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebarWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebarMenu {
+    margin-bottom: 10px;
+}
+
+.sidebarList {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebarlistItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sidebarlistItem.active,
+.sidebarlistItem:hover {
+    background-color: #ececff;
+    color: #b2744c;
+}
+
+.sidebarIcon {
+    font-size: 20px !important;
+    color: #b2744c;
+}
+
+button {
+    background-color: #b2744c;
+    width: 100%;
+    border-radius: 12px;
+    height: 44px;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition:0.3s;
+}
+
+
+
+.log-out {
+    margin-top: auto;
+    max-width: 200px;
+    padding-top: 20px;
+    text-align: center;
+}
