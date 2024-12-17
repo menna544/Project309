@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./authen.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -18,6 +18,7 @@ const Authentication = () => {
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true);
 
+
   const handleToggleView = () => {
     setIsSignUp(!isSignUp);
     resetErrors();
@@ -31,85 +32,47 @@ const Authentication = () => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Email validation
     if (!email || !emailPattern.test(email)) {
       setEmailError("Enter a valid email address");
       return;
-    } else {
-      setEmailError("");
     }
-
-    // Password validation
     if (!password || password.length < 8) {
       setPasswordError("Password must be at least 8 characters");
       return;
-    } else {
-      setPasswordError("");
     }
-
-    // Confirm password validation
     if (isSignUp && password !== confirmPassword) {
       setConfirmPasswordError("Passwords do not match");
       return;
-    } else {
-      setConfirmPasswordError("");
     }
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
-
     if (isSignUp) {
-      // Check if the email already exists
       const existingUser = users.find((user) => user.email === email);
       if (existingUser) {
         setEmailError("An account with this email already exists");
         return;
       }
-
-      // Add new user
       const newUser = { email, password };
       users.push(newUser);
       localStorage.setItem("users", JSON.stringify(users));
-      localStorage.setItem(
-        "currentUser",
-        JSON.stringify({ email: newUser.email, password: newUser.password })
-      );
-      navigate("/", { state: { userEmail: email } });
+      localStorage.setItem("currentUser", JSON.stringify(newUser));
+      navigate("/product", { state: { userEmail: email } });
     } else {
-      // Sign-in flow
-      const user = users.find(
-        (user) => user.email === email && user.password === password
-      );
+      const user = users.find((user) => user.email === email && user.password === password);
       if (!user) {
         setEmailError("Invalid email or password");
         return;
       }
-
-      localStorage.setItem(
-        "currentUser",
-        JSON.stringify({ email: user.email, password: user.password })
-      );
+      localStorage.setItem("currentUser", JSON.stringify(user));
       navigate("/", { state: { userEmail: email } });
     }
   };
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
-    setConfirmPasswordVisible(!confirmPasswordVisible);
-  };
-
   return (
     <div className="App">
-      <ArrowBackIcon
-        style={{ fontSize: "30px" }}
-        className="arrow"
-        onClick={() => navigate("/")}
-      />
+      <ArrowBackIcon style={{ fontSize: "30px" }} className="arrow" onClick={() => navigate("/")} />
       <div className="page7">
         <div className="cont6">
           <h1>{isSignUp ? "Create an Account" : "Sign In"}</h1>
@@ -132,15 +95,9 @@ const Authentication = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             {passwordVisible ? (
-              <VisibilityIcon
-                className="input-icon"
-                onClick={togglePasswordVisibility}
-              />
+              <VisibilityIcon className="input-icon" onClick={() => setPasswordVisible(!passwordVisible)} />
             ) : (
-              <VisibilityOffIcon
-                className="input-icon"
-                onClick={togglePasswordVisibility}
-              />
+              <VisibilityOffIcon className="input-icon" onClick={() => setPasswordVisible(!passwordVisible)} />
             )}
           </div>
           {passwordError && <p className="error-message">{passwordError}</p>}
@@ -156,19 +113,17 @@ const Authentication = () => {
               {confirmPasswordVisible ? (
                 <VisibilityIcon
                   className="input-icon"
-                  onClick={toggleConfirmPasswordVisibility}
+                  onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
                 />
               ) : (
                 <VisibilityOffIcon
                   className="input-icon"
-                  onClick={toggleConfirmPasswordVisibility}
+                  onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
                 />
               )}
             </div>
           )}
-          {isSignUp && confirmPasswordError && (
-            <p className="error-message">{confirmPasswordError}</p>
-          )}
+          {isSignUp && confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
 
           <button onClick={handleSignUp} className="button2">
             {isSignUp ? "Get Started" : "Sign In"}
