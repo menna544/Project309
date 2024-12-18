@@ -66,6 +66,7 @@
     background-color: #b2744c;
     color: white;
     border: none;
+    width: fit-content;
     font-family: "Oswald", serif;
   font-weight: 500;
   font-style: normal;

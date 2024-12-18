@@ -1,0 +1,66 @@
+
+.container3 {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .DashHome {
+    flex: 1;
+
+  }
+  
+  .newProduct {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .addProductTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b2744c;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .addProductForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .addProductItem {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .addProductItem > label {
+    color: gray;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .addProductItem > input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .addProductButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #b2744c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addProductButton:hover {
+    background-color: #b2744c;
+  }
+  

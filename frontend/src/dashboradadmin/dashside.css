@@ -1,7 +1,8 @@
-.sidebar {
+.sidebar1 {
     height: 100vh;
     background-color: #f7f7ff;
     position: sticky;
+    max-width: 250px;
     top: 0;
     margin: 0;
     padding: 10px 15px;
@@ -79,3 +80,18 @@ button {
     padding-top: 20px;
     text-align: center;
 }
+
+.dashboardContainer {
+    display: flex;
+    height: 100vh;
+  }
+  
+ 
+
+  .contentWrapper {
+    flex: 1; 
+    overflow-y: auto;
+  }
+  
+  
+ 
