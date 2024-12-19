@@ -11,11 +11,12 @@ import menu6 from '../images/ae3695f39c91093e61e81105684f3021.jpg';
 import menu7 from '../images/5aa7d84d74e54c07c0414837404cd65c.jpg';
 import menu8 from '../images/6a86c387495a30851e5843a582c7b6f2.jpg';
 import menu9 from '../images/cbff53f6656a90d44d4fb33ba4f07e2b.jpg';
-import menu10 from '../images/8435914e1fcd7a95874395a7678d01bc.jpg'
-import menu11 from '../images/b84c9db0910aa8247d79b69a4ecd1438.jpg'
-import menu12 from '../images/95d0ba93472222e30990f79cfc335f83.jpg'
+import menu10 from '../images/8435914e1fcd7a95874395a7678d01bc.jpg';
+import menu11 from '../images/b84c9db0910aa8247d79b69a4ecd1438.jpg';
+import menu12 from '../images/95d0ba93472222e30990f79cfc335f83.jpg';
+import imag from '../images/573a46c7818f8cca76e394ac5af72542.jpg';
 import './product.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const products = [
   { id: 1, name: 'Latte Macchiato', image: menu1, price: 35 },
@@ -90,10 +91,21 @@ function Products() {
     <div className="container">
       <header>
         <h1>Shop Now</h1>
-        <div className="shopping" onClick={() => setIsSidebarOpen(true)}>
-          <ShoppingCartIcon style={{ fontSize: 30 }} />
-          <span className="quantity">{totalItems}</span>
+        <div className="header-actions">
+          <Link to="/profile" className="profile-link">
+            <img
+              src={imag}
+              alt="Profile"
+              className="profile-image"
+            />
+          </Link>
+
+          <div className="shopping" onClick={() => setIsSidebarOpen(true)}>
+            <ShoppingCartIcon style={{ fontSize: 30 }} />
+            <span className="quantity">{totalItems}</span>
+          </div>
         </div>
+        
         <div className="logout-button" onClick={() => navigate("/auth")}>
           <LogoutIcon className="logout-icon" />
           <p className="logout-text">Logout</p>
