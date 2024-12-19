@@ -20,7 +20,7 @@ function DashHome() {
   });
 
   const handleProfileClick = () => {
-    setIsProfileOpen(!isProfileOpen); // Toggle profile page visibility
+    setIsProfileOpen(!isProfileOpen); 
   };
 
   const handleChange = (e) => {
@@ -29,7 +29,7 @@ function DashHome() {
 
   const handleSave = () => {
     console.log('Profile Updated:', profileData);
-    setIsProfileOpen(false); // Close the profile form after saving
+    setIsProfileOpen(false); 
   };
 
   return (
