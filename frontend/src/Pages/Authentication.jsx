@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./authen.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -18,7 +18,6 @@ const Authentication = () => {
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true);
 
-
   const handleToggleView = () => {
     setIsSignUp(!isSignUp);
     resetErrors();
@@ -32,7 +31,10 @@ const Authentication = () => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
+
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    resetErrors();
 
     if (!email || !emailPattern.test(email)) {
       setEmailError("Enter a valid email address");
@@ -47,17 +49,21 @@ const Authentication = () => {
       return;
     }
 
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
     if (isSignUp) {
+
       const existingUser = users.find((user) => user.email === email);
       if (existingUser) {
         setEmailError("An account with this email already exists");
         return;
       }
+
       const newUser = { email, password };
       users.push(newUser);
       localStorage.setItem("users", JSON.stringify(users));
       localStorage.setItem("currentUser", JSON.stringify(newUser));
+
       navigate("/product", { state: { userEmail: email } });
     } else {
       const user = users.find((user) => user.email === email && user.password === password);
@@ -66,7 +72,7 @@ const Authentication = () => {
         return;
       }
       localStorage.setItem("currentUser", JSON.stringify(user));
-      navigate("/", { state: { userEmail: email } });
+      navigate("/product", { state: { userEmail: email } });
     }
   };
 
