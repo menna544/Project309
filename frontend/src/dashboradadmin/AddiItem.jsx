@@ -40,7 +40,15 @@ function NewProduct() {
       image: null, // Reset the image
     });
   };
+  const deleteProduct =(productId) =>{
+    const confirmDelete = window.confirm(" Are you sure for Deleting this product?");
+    if (!confirmDelete) return;
 
+    setProducts(products.filter((product) => product.id !== productId));
+
+
+
+  }
   const displayImage = productData.image ? URL.createObjectURL(productData.image) : null;
 
   return (
@@ -105,6 +113,7 @@ function NewProduct() {
                   <p><strong>Name:</strong> {product.name}</p>
                   <p><strong>Price:</strong> {product.price}</p>
                   <p><strong>Description:</strong> {product.description}</p>
+                  <button className='btn'onClick={() => deleteProduct(product.id)}>Delete product</button>
                   </div>
                 </li>
               ))}
