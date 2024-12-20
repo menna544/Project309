@@ -113,3 +113,9 @@
 .productItem strong {
   font-weight: bold;
 }
+.buttonpro{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 10px;
+}
