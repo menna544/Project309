@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Search from './search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
-import LogoutIcon from '@mui/icons-material/Logout';
+import ArrowLeftIcon from "@mui/icons-material/ArrowBack";
 import menu1 from '../images/5fc4e1800911057f993b96c854fb2d26.jpg';
 import menu2 from '../images/3532ca198f8a6b74e9d11a1890bdf0fe.jpg';
 import menu3 from '../images/953e9e11c77993d6b78a3eaaa1536e3c.jpg';
@@ -93,7 +93,13 @@ function Products() {
   return (
     <div className="container">
       <header>
-        <h1>Shop Now</h1>
+        <div className="header-actions">
+          <ArrowLeftIcon 
+            onClick={() => navigate('/')} 
+            style={{ fontSize: 30, cursor: 'pointer', marginRight: '20px' }} 
+          />
+          <h1>Shop Now</h1>
+        </div>
         <div className="header-actions">
           <Link to="/profile" className="profile-link">
             <img
@@ -108,17 +114,12 @@ function Products() {
             <span className="quantity">{totalItems}</span>
           </div>
         </div>
-        
-        <div className="logout-button" onClick={() => navigate("/auth")}>
-          <LogoutIcon className="logout-icon" />
-          <p className="logout-text">Logout</p>
-        </div>
       </header>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="list">
         {filteredProducts.map((product) => (
           <div key={product.id} className="item">
-            <img src={product.image} alt={product.name}  onClick={() => goToProductDetails(product.id)}/>
+            <img src={product.image} alt={product.name} onClick={() => goToProductDetails(product.id)} />
             <p>{product.name}</p>
             <div className="price">${product.price}</div>
             <button onClick={() => addToCart(product.id)}>Add to cart</button>
