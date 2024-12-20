@@ -13,8 +13,7 @@ function App() {
 
   return (
     <Router>
-      <div className="dashboardContainer">
-        <div className="contentWrapper">
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dash" element={<DashHome />} />
@@ -28,8 +27,7 @@ function App() {
                 <Route path="/profile" element={<ProfileComponent />} />
                 <Route path="/profile/edit" element={<EditProfile />} />
           </Routes>
-        </div>
-      </div>
+     
     </Router>
   );
 }
