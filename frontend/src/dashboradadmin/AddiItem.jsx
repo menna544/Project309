@@ -7,23 +7,41 @@ function NewProduct() {
     name: '',
     type: '',
     price: '',
-    description: ''
+    description: '',
+    image: null, 
   });
 
+  const [products, setProducts] = useState([]); 
+
   const handleChange = (e) => {
-    setProductData({ ...productData, [e.target.name]: e.target.value });
+    const { name, value, type, files } = e.target;
+
+    if (type === "file") {
+      // Handle file input
+      setProductData({ ...productData, [name]: files[0] });
+    } else {
+      // Handle text inputs
+      setProductData({ ...productData, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(productData);
+
+    // Add the new product to the list, including the image
+    setProducts([...products, productData]);
+
+    // Reset the form fields
     setProductData({
       name: '',
+      type: '',
       price: '',
       description: '',
-      size: '',
+      image: null, // Reset the image
     });
   };
+
+  const displayImage = productData.image ? URL.createObjectURL(productData.image) : null;
 
   return (
     <div className="container3">
@@ -35,7 +53,13 @@ function NewProduct() {
           <form className="addProductForm" onSubmit={handleSubmit}>
             <div className="addProductItem">
               <label>Image</label>
-              <input type="file" id="file" name="file" />
+              <input 
+                type="file" 
+                id="file" 
+                name="image" 
+                onChange={handleChange} 
+              />
+              {displayImage && <img src={displayImage} alt="Product Preview" className="imagePreview" />}
             </div>
             <div className="addProductItem">
               <label>Name</label>
@@ -70,6 +94,21 @@ function NewProduct() {
 
             <button type="submit" className="addProductButton">Create</button>
           </form>
+
+          {/* Display the added products */}
+          <div className="productList">
+            <h2>Added Products:</h2>
+            <ul>
+              {products.map((product, index) => (
+                <li key={index} className="productItem">
+                  {product.image && <img src={URL.createObjectURL(product.image)} alt="Product" className="productImage" />}
+                  <p><strong>Name:</strong> {product.name}</p>
+                  <p><strong>Price:</strong> {product.price}</p>
+                  <p><strong>Description:</strong> {product.description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
