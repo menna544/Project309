@@ -6,7 +6,7 @@
 }
 header {
     display: grid;
-    grid-template-columns: 1fr 50px;
+    grid-template-columns: 1fr 130px;
     margin-left: 15px;
     margin-top: 50px;
 }
@@ -209,7 +209,23 @@ div.center-container {
 .logout-text {
     margin: 0;
 }
-
+.header-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px; 
+  }
+  
+  .profile-link {
+    cursor: pointer;
+  }
+  
+  .profile-image {
+    width: 40px;
+    margin-top: 30px;
+    height: 40px;
+    border-radius: 50%;
+  }
 @media screen and (max-width: 950px) {
     .list {
         display: flex;

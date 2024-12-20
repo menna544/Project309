@@ -12,7 +12,7 @@ function Sidebar() {
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
-          <div className="profile">
+          <div className="profilee">
             <img src={imag} alt="admin" className="profileImage" />
             <div>
               <p className="adminName">Menna Maged</p>
