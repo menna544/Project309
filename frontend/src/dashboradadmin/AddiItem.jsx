@@ -46,10 +46,9 @@ function NewProduct() {
   return (
     <div className="container3">
       <Sidebar />
-
       <div className='DashHome'>
         <div className="newProduct">
-          <h1 className="addProductTitle">New Product</h1>
+          <h1 className="addProductTitle"> Add New Product</h1>
           <form className="addProductForm" onSubmit={handleSubmit}>
             <div className="addProductItem">
               <label>Image</label>
@@ -102,9 +101,11 @@ function NewProduct() {
               {products.map((product, index) => (
                 <li key={index} className="productItem">
                   {product.image && <img src={URL.createObjectURL(product.image)} alt="Product" className="productImage" />}
+                  <div className='allp'>
                   <p><strong>Name:</strong> {product.name}</p>
                   <p><strong>Price:</strong> {product.price}</p>
                   <p><strong>Description:</strong> {product.description}</p>
+                  </div>
                 </li>
               ))}
             </ul>
