@@ -4,6 +4,7 @@ import 'dotenv/config'
 import connectDB from './config/mongodb.js'
 import connectCLOUDINARY from './config/cloudinary.js';
 import userRouter from './routes/users.js';
+import productRouter from './routes/products.js';
 
 
 ////const express = require('express');
@@ -13,13 +14,6 @@ const PORT = process.env.PORT||4000;
 connectDB();
 connectCLOUDINARY();
 
-
-// const mongoose = require('mongoose');
-
-// // Connect to MongoDB
-// mongoose.connect('mongodb+srv://bassantnaser:1234@main.xgtdr.mongodb.net/?retryWrites=true&w=majority&appName=main',{ useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => console.log('MongoDB connected'))
-//     .catch(err => console.log('MongoDB connection error:', err));
 
 //middleware
 app.use(express.json());
@@ -31,6 +25,7 @@ app.use(cors());
 //api endpoints
 
 app.use('/api/user', userRouter);
+app.use('/api/product', productRouter);
 
 
 app.get('/',(req,res)=>{
