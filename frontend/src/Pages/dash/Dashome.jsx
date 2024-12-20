@@ -39,7 +39,7 @@ function DashHome() {
         <div className="header">
           <h1>Welcome to MOMO CoffeShop</h1>
           <div className="profilee" onClick={handleProfileClick}>
-            <img src={imag} alt="Profile" className="profileImage" />
+            <img src={imag} alt="Profilee" className="profileImage" />
             <div>
               <p className="adminName">{profileData.name}</p>
             </div>
