@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Search from './search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -37,7 +38,7 @@ function Products() {
   const navigate = useNavigate();
   const [cart, setCart] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState('');
   const addToCart = (productId) => {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
@@ -49,7 +50,9 @@ function Products() {
     });
     setIsSidebarOpen(true);
   };
-
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   const goToProductDetails = (productId) => {
     const product = products.find((item) => item.id === productId);
     navigate(`/product/${productId}`, { state: product });
@@ -111,18 +114,17 @@ function Products() {
           <p className="logout-text">Logout</p>
         </div>
       </header>
-
+      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="list">
-        {products.map((product) => (
-          <div key={product.id} className="item" onClick={() => goToProductDetails(product.id)}>
-            <img src={product.image} alt={product.name} />
+        {filteredProducts.map((product) => (
+          <div key={product.id} className="item">
+            <img src={product.image} alt={product.name}  onClick={() => goToProductDetails(product.id)}/>
             <p>{product.name}</p>
             <div className="price">${product.price}</div>
-            <button onClick={(e) => { e.stopPropagation(); addToCart(product.id); }}>Add to cart</button>
+            <button onClick={() => addToCart(product.id)}>Add to cart</button>
           </div>
         ))}
       </div>
-
       <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <h2>Shopping Cart</h2>
@@ -136,9 +138,9 @@ function Products() {
                 <p>{item.name}</p>
                 <p>Price: ${item.price}</p>
                 <div className="quantity-controls">
-                  <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                  <button onClick={() => decreaseQuantity(item.id)} className='button3'>-</button>
                   <p>Quantity: {item.quantity}</p>
-                  <button onClick={() => increaseQuantity(item.id)}>+</button>
+                  <button onClick={() => increaseQuantity(item.id)} className='button3'>+</button>
                 </div>
               </div>
             </li>

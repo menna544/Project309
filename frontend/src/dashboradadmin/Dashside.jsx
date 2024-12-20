@@ -9,7 +9,7 @@ function Sidebar() {
 
   return (
     <div className="sidebar1">
-      <div className="sidebarWrapper">
+ 
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <div className="profilee">
@@ -61,7 +61,7 @@ function Sidebar() {
           </div>
         </div>
       </div>
-    </div>
+
   );
 }
 
