@@ -14,22 +14,28 @@ const Profile = () => {
   });
 
   useEffect(() => {
-
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if (currentUser) {
- 
       setUserData({
-        name: currentUser.name || "No name",    
-        email: currentUser.email || "No email", 
-        phone: currentUser.password || "No phone",  
-        address: currentUser.address || "No address", 
+        name: currentUser.name || "No name",
+        email: currentUser.email || "No email",
+        phone: currentUser.phone || "No phone", // Fixed from 'password' to 'phone'
+        address: currentUser.address || "No address",
       });
     }
   }, []);
 
+  const handleSignOut = () => {
+    // Remove user data from local storage
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("isAuthenticated");
+    // Navigate to the auth page or the home page
+    navigate("/auth");
+  };
+
   return (
-    <div className="profile">
+    <div className="profille">
       <div className="profile-header">
         <FaArrowLeft
           className="back-icon"
@@ -53,7 +59,7 @@ const Profile = () => {
         </div>
         <div className="profile-input">
           <p>Phone:</p>
-          <input type="phone" value={userData.password} readOnly />
+          <input type="text" value={userData.phone} readOnly />
         </div>
         <div className="profile-input">
           <p>Address:</p>
@@ -62,11 +68,14 @@ const Profile = () => {
       </div>
       <div className="profile-btns">
         <Link to={"/profile/edit"}>
-          <button className="Profilebutton1">Edit Profile</button>
+          <button className="Profilebutton2">Edit Profile</button>
         </Link>
         <Link to={"/product"}>
           <button className="Profilebutton2">Cancel</button>
         </Link>
+        <button className="Profilebutton2" onClick={handleSignOut}>
+          Sign Out
+        </button>
       </div>
     </div>
   );

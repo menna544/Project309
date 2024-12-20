@@ -3,7 +3,33 @@
 .active{
     background-color: #CEE6F3;
 }
+.image2{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
 
+.signout-container {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .signout-button {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .signout-button:hover {
+    background-color: #ff4a3d;
+  }
+  
 nav {
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;

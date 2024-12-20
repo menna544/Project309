@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./authen.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -17,6 +17,13 @@ const Authentication = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true);
+
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("currentUser");
+    if (isAuthenticated) {
+      navigate("/product");
+    }
+  }, [navigate]);
 
   const handleToggleView = () => {
     setIsSignUp(!isSignUp);
@@ -52,7 +59,6 @@ const Authentication = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
     if (isSignUp) {
-
       const existingUser = users.find((user) => user.email === email);
       if (existingUser) {
         setEmailError("An account with this email already exists");
