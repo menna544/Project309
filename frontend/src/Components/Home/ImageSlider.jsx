@@ -20,7 +20,7 @@ const ImageSlider = () => {
 
     return () => clearInterval(interval); 
   }, [Slides.length]); 
- 
+
   const handleLeftArrowClick = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? Slides.length - 1 : prevIndex - 1
@@ -33,7 +33,15 @@ const ImageSlider = () => {
     );
   };
 
-  
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+
+  const handleButtonClick = () => {
+    if (isAuthenticated) {
+      navigate("/products");
+    } else {
+      navigate("/auth");
+    }
+  };
 
   return (
     <>
@@ -55,15 +63,13 @@ const ImageSlider = () => {
               <br />
               coffee is now☕️☕️
             </h3>
-            
             <p>
-              
               Coffee is flavoursome, fragrant, and deeply rich in taste (using
               freshly roasted coffee beans).
             </p>
             <button
               id="btn"
-              onClick={() => navigate("/auth")}
+              onClick={handleButtonClick}
             >
               Get yours now
             </button>
@@ -76,7 +82,6 @@ const ImageSlider = () => {
         >
           &#9655;
         </div>
-      
       </div>
     </>
   );

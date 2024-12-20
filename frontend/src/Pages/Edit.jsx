@@ -41,7 +41,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="profile">
+    <div className="profille">
       <div className="profile-header">
         <FaArrowLeft
           className="back-icon"
@@ -94,7 +94,7 @@ const EditProfile = () => {
         </div>
       </div>
       <div className="profile-btns">
-        <button className="Profilebutton1" onClick={handleSave}>
+        <button className="Profilebutton2" onClick={handleSave}>
           Save
         </button>
         <Link to="/profile">
