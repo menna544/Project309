@@ -22,7 +22,11 @@ export const Navbar = () => {
         <li>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </li>
+        <li>
+          <a href="#review" onClick={() => setMenuOpen(false)}>Review</a>
+        </li>
       </ul>
+     
     </nav>
   );
 };

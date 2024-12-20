@@ -6,6 +6,7 @@ import About from '../Components/Home/About';
 import MenuSection from '../Components/Home/menusec';
 import ImageSlider from '../Components/Home/ImageSlider';
 import Contact from '../Components/Home/Contact';
+import Review from './Review';
 function Home() {
   return (
     <>
@@ -16,6 +17,7 @@ function Home() {
    <About />
     <MenuSection />
     <Contact />
+    <Review />
     <Footer />
     </> );
 }
