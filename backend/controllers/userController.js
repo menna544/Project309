@@ -11,8 +11,8 @@ return jwt.sign({id},process.env.JWT_SECREAT)
 const loginUser = async(req,res)=>{
 
 try {
-    const{name,password}=req.body;
-    const user = await userModel.findOne({name})
+    const{email,password}=req.body;
+    const user = await userModel.findOne({email})
     if(!user){
         return res.json({success:false,message:"user does not exist"})
        
