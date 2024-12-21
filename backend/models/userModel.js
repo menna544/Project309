@@ -4,20 +4,19 @@ import mongoose from "mongoose";
 
 
 const userSchema = new mongoose.Schema({
-    name: {
+    email: {
         type: String,
         required: true,
-        // unique:true
-        },
-    email: {
-            type: String,
-            required: true,
-            unique:true
-            },
+        unique: true
+    },
     password: {
         type: String,
-        //required: true,
-        
+        required: true
+    },
+    name: {
+        type: String,
+        required: true, // Ensure name is required
+        trim: true
     }
 });
 

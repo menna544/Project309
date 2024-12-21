@@ -5,15 +5,18 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import EmailIcon from "@mui/icons-material/Email";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import axios from 'axios';
 
 const Authentication = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState(""); // Add state for name
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [nameError, setNameError] = useState(""); // Add state for name error
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true);
@@ -34,13 +37,13 @@ const Authentication = () => {
     setEmailError("");
     setPasswordError("");
     setConfirmPasswordError("");
+    setNameError(""); // Reset name error
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     resetErrors();
 
     if (!email || !emailPattern.test(email)) {
@@ -55,30 +58,27 @@ const Authentication = () => {
       setConfirmPasswordError("Passwords do not match");
       return;
     }
+    if (isSignUp && !name) { // Ensure name is provided during sign-up
+      setNameError("Name is required");
+      return;
+    }
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    if (isSignUp) {
-      const existingUser = users.find((user) => user.email === email);
-      if (existingUser) {
-        setEmailError("An account with this email already exists");
-        return;
+    try {
+      if (isSignUp) {
+        const response = await axios.post('http://localhost:4000/api/user/register', { email, password, name }); // Send name in the request
+        localStorage.setItem("currentUser", JSON.stringify(response.data));
+        navigate("/product", { state: { userEmail: email } });
+      } else {
+        const response = await axios.post('http://localhost:4000/api/user/login', { email, password });
+        localStorage.setItem("currentUser", JSON.stringify(response.data));
+        navigate("/product", { state: { userEmail: email } });
       }
-
-      const newUser = { email, password };
-      users.push(newUser);
-      localStorage.setItem("users", JSON.stringify(users));
-      localStorage.setItem("currentUser", JSON.stringify(newUser));
-
-      navigate("/product", { state: { userEmail: email } });
-    } else {
-      const user = users.find((user) => user.email === email && user.password === password);
-      if (!user) {
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
         setEmailError("Invalid email or password");
-        return;
+      } else {
+        setEmailError("Something went wrong, please try again");
       }
-      localStorage.setItem("currentUser", JSON.stringify(user));
-      navigate("/product", { state: { userEmail: email } });
     }
   };
 
@@ -88,6 +88,20 @@ const Authentication = () => {
       <div className="page7">
         <div className="cont6">
           <h1>{isSignUp ? "Create an Account" : "Sign In"}</h1>
+
+          {/* Name Input (Visible only during sign-up) */}
+          {isSignUp && (
+            <div className="input-container">
+              <input
+                type="text"
+                placeholder="Enter your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+          )}
+          {nameError && <p className="error-message">{nameError}</p>}
+
           <div className="input-container">
             <input
               type="email"

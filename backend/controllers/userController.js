@@ -8,69 +8,77 @@ return jwt.sign({id},process.env.JWT_SECREAT)
 }
 
 //route for user login
-const loginUser = async(req,res)=>{
+// route for user login
+const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await userModel.findOne({ email });
 
-try {
-    const{email,password}=req.body;
-    const user = await userModel.findOne({email})
-    if(!user){
-        return res.json({success:false,message:"user does not exist"})
-       
-    }
-    const isMatch = bcrypt.compare(password,user.password);
-    if (isMatch) {
-        const token = createToken(user._id)
-        res.json({success:true,token})
-    }
-    else{
-        res.json({success:false,message:"invalled"})
-    }
+        if (!user) {
+            return res.json({ success: false, message: "User does not exist" });
+        }
 
-} catch (error) {
-    console.log(error)
-    res.json({success:false,message:error.message})
-}
+        // Compare provided password with the stored hashed password
+        const isMatch = await bcrypt.compare(password, user.password);
 
-}
+        if (isMatch) {
+            const token = createToken(user._id);
+            // Send response with token, email, and name
+            res.json({ success: true, token, email: user.email, name: user.name });
+        } else {
+            res.json({ success: false, message: "Invalid password" });
+        }
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+};
 
 
 
 //route for user register
-const registerUser = async(req,res)=>{
-//res.json({msg:"register api working"})
-try {
-    const{name,email,password}=req.body;
+const registerUser = async (req, res) => {
+    try {
+        const { email, password, name } = req.body;
 
-    //checking user already exist
+        // Check if user already exists
+        const exists = await userModel.findOne({ email });
+        if (exists) {
+            return res.json({ success: false, message: "User already exists", email,name });
+        }
 
+        // Validate email
+        if (!validator.isEmail(email)) {
+            return res.json({ success: false, message: "Enter a valid email" });
+        }
 
-const exists = await userModel.findOne({email});
-if(exists){
-    return res.json({success:false,message:"user is already exist"})
-}
+        // Ensure the name is provided and not null
+        if (!name) {
+            return res.json({ success: false, message: "Name is required" });
+        }
 
-if(!validator.isEmail(email)){
-    return res.json({success:success,message:"enter valied e-mail"})
-}
-//hashing user passward
-const salt = await bcrypt.genSalt(10);
-const hashedPassword = await bcrypt.hash(password,salt);
-const newUser = new userModel({
-    name,
-    email,
-    password:hashedPassword
-})
+        // Hashing password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-const user = await newUser.save();
-const token = createToken(user._id)
-res.json({success:true,token})
+        // Create new user
+        const newUser = new userModel({
+            email,
+            password: hashedPassword,
+            name // Make sure 'name' is included here
+        });
 
+        const user = await newUser.save();
+        const token = createToken(user._id);
 
-} catch (error) {
-    console.log(error)
-    res.json({success:false,message:error.message})
-}
-}
+        // Send response including the email and token
+        res.json({ success: true, token, email: user.email ,name:user.name});
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+};
+
 
 //route for admain login
 const loginAdmain = async(req,res)=>{
