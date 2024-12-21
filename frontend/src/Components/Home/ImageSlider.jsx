@@ -4,7 +4,7 @@ import i3 from "../../images/view-coffee-machin.jpg";
 import { useNavigate } from "react-router-dom";
 import i4 from "../../images/close-up-barista-making-cappuccino-bartender-preparing-coffee-drink.jpg";
 import i2 from "../../images/cups-professional-coffee-machine.jpg";
-import "./imageslider.css";
+import "./imageslider.css"; 
 
 const ImageSlider = () => {
   const navigate = useNavigate();
