@@ -7,7 +7,7 @@ const createToken = (id)=>{
 return jwt.sign({id},process.env.JWT_SECREAT)
 }
 
-//route for user login
+
 // route for user login
 const loginUser = async (req, res) => {
     try {
@@ -82,7 +82,20 @@ const registerUser = async (req, res) => {
 
 //route for admain login
 const loginAdmain = async(req,res)=>{
+    try {
+    const {email,password} = req.body
+    if (email === process.env.ADMAIN_EMAIL && password === process.env.ADMAIN_PASSWORD){
+        const token = jwt.sign(email+password,process.env.JWT_SECREAT)
+        res.json({success:true,token} )
+    }
 
+    
+} catch (error) {
+    console.log(error)
+        res.json({success:false,message:"invaled cordenations"}
+
+        )
+    }
 }
 
 export {loginUser, registerUser,loginAdmain} ;
