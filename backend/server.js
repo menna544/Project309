@@ -7,9 +7,11 @@ import userRouter from './routes/users.js';
 import productRouter from './routes/products.js';
 
 
-////const express = require('express');
+
 //app config
 const app = express();
+
+app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT||4000;
 connectDB();
 connectCLOUDINARY();
